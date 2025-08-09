@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* Hide scrollbars for all common browsers */
+body, html {
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar { 
+    display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+}
+
+.hero {
+    min-height: calc(100vh - 80px); /* Account for fixed header */
+    max-height: calc(100vh - 80px); /* Prevent overflow */
+    display: flex; /* flex */
+    align-items: center; /* items-center */
+    position: relative; /* relative */
+    overflow: hidden; /* Prevent scrolling */
+    margin-top: 80px; /* Space for fixed header */
+}
+
+.hero-content {
+    display: flex; /* flex */
+    flex-direction: column; /* flex-col */
+    align-items: flex-start; /* items-start */
+    justify-content: center; /* justify-center */
+    padding-left: 2%; /* Moved further left */
+    min-height: calc(100vh - 80px); /* Account for header */
+    max-height: calc(100vh - 80px); /* Prevent overflow */
+}
+
+.hero-logo {
+    margin-bottom: 1rem; /* Reduced from 2rem */
+    transform: translateX(-10%); /* Move logo further left */
+}
+
+.hero-balls {
+    @apply flex inset-0 pointer-events-none;
+    right: 60%;
+}
+
+.meta-balls-container {
+    @apply w-full h-full absolute top-0 left-0 pointer-events-auto;
+    max-height: 100vh; /* Prevent overflow */
+}

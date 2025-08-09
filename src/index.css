@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+header{
+ width: 100%;
+ display: flex;
+
+}
+
+body {
+  @apply bg-black;
+ 
+}
