@@ -30,19 +30,21 @@ const Portfolio = () => {
   const portfolioItems = [
     {
       id: 1,
-      title: "E-Commerce Platform",
+      title: "E-Commerce",
       description: "Modern online store with payment integration",
       variant: "default",
       link: "https://example.com/project1",
-      image: "🛒"
+      image: "🛒",
+      thumbnail: "src/assets/chippsstore.webp" // Add your image path here
     },
     {
       id: 2,
-      title: "Corporate Website",
+      title: "Website",
       description: "Professional business website with CMS",
       variant: "default",
       link: "https://example.com/project2",
-      image: "🏢"
+      image: "🏢",
+      thumbnail: "src/assets/Cubesat.webp" // Add your image path here
     },
     {
       id: 3,
@@ -50,7 +52,8 @@ const Portfolio = () => {
       description: "Content management system with rich editor",
       variant: "default",
       link: "https://example.com/project3",
-      image: "📝"
+      image: "📝",
+      thumbnail: "/images/blog-project.jpg" // Add your image path here
     },
     {
       id: 4,
@@ -58,7 +61,8 @@ const Portfolio = () => {
       description: "High-converting landing page design",
       variant: "default",
       link: "https://example.com/project4",
-      image: "🚀"
+      image: "🚀",
+      thumbnail: "/images/landing-project.jpg" // Add your image path here
     }
   ];
 
@@ -87,6 +91,7 @@ const Portfolio = () => {
                 variant={item.variant}
                 className="portfolio-pixel-card"
                 onClick={() => handleCardClick(item.link)}
+                thumbnail={item.thumbnail}
               >
                 <div className="portfolio-card-inner">
                   <div className="portfolio-card-icon">

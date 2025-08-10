@@ -134,6 +134,7 @@ export default function PixelCard({
   noFocus,
   className = "",
   onClick,
+  thumbnail,
   children
 }) {
   const containerRef = useRef(null);
@@ -270,6 +271,12 @@ export default function PixelCard({
       onClick={handleClick}
       tabIndex={finalNoFocus ? -1 : 0}
     >
+      {thumbnail && (
+        <div 
+          className="pixel-card-background"
+          style={{backgroundImage: `url(${thumbnail})`}}
+        />
+      )}
       <canvas
         className="pixel-card-canvas"
         ref={canvasRef}

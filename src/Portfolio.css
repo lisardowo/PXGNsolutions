@@ -76,11 +76,29 @@
   @apply transition-colors duration-200 select-none cursor-pointer;
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   display: block;
+  background: #1a1a1a;
 }
 
 .pixel-card:hover {
   @apply transform scale-105;
   transition: transform 0.3s ease;
+}
+
+/* Background image for thumbnails */
+.pixel-card-background {
+  @apply absolute inset-0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: inherit;
+  z-index: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.8;
+}
+
+.pixel-card:hover .pixel-card-background {
+  transform: scale(1.05);
+  opacity: 0.6;
 }
 
 .pixel-card-canvas {
@@ -89,46 +107,58 @@
   height: 100% !important;
   display: block;
   border-radius: inherit;
+  z-index: 2;
 }
 
 .pixel-card-content {
   @apply absolute inset-0 z-10 p-8 flex flex-col justify-center items-center text-center;
   pointer-events: none;
   border-radius: inherit;
+  z-index: 3;
 }
 
 /* Portfolio Card Content */
 .portfolio-card-inner {
   @apply relative z-20 flex flex-col items-center justify-center h-full text-center;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 0, 0, 0.3) 0%, 
+    rgba(0, 0, 0, 0.5) 50%, 
+    rgba(0, 0, 0, 0.7) 100%
+  );
   border-radius: inherit;
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(2px);
   transition: background-color 0.3s ease;
 }
 
 .pixel-card:hover .portfolio-card-inner {
-  background: rgba(0, 0, 0, 0.05);
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 0, 0, 0.2) 0%, 
+    rgba(0, 0, 0, 0.4) 50%, 
+    rgba(0, 0, 0, 0.6) 100%
+  );
 }
 
 .portfolio-card-icon {
   @apply text-6xl mb-6;
-  filter: grayscale(1) opacity(0.9);
+  filter: grayscale(0) opacity(0.9);
   transition: all 0.3s ease;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .pixel-card:hover .portfolio-card-icon {
   filter: grayscale(0) opacity(1);
   transform: scale(1.1);
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
 }
 
 .portfolio-card-title {
-  @apply text-2xl font-bold text-gray-900 mb-3;
+  @apply text-2xl font-bold text-white mb-3;
   opacity: 0.95;
   transition: opacity 0.3s ease;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .pixel-card:hover .portfolio-card-title {
@@ -136,10 +166,10 @@
 }
 
 .portfolio-card-description {
-  @apply text-gray-700 text-sm leading-relaxed mb-6 px-4;
+  @apply text-gray-200 text-sm leading-relaxed mb-6 px-4;
   opacity: 0.9;
   transition: opacity 0.3s ease;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .pixel-card:hover .portfolio-card-description {
@@ -160,8 +190,18 @@
 }
 
 .portfolio-card-cta {
-  @apply bg-gray-900 text-white px-6 py-3 rounded-lg font-medium text-sm;
+  @apply bg-orange-600 bg-opacity-90 text-white px-6 py-3 rounded-lg font-medium text-sm;
   @apply flex items-center gap-2;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.pixel-card:hover .portfolio-card-cta {
+  @apply bg-orange-700;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
 }
 
 /* Portfolio CTA */
