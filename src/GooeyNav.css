@@ -131,7 +131,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgb(226, 14, 14);
+  background: orange;
   transform: scale(0);
   opacity: 0;
   z-index: -1;

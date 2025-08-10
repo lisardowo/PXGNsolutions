@@ -2,18 +2,10 @@ import React from "react";
 import './hero.css';
 import MetaBalls from './MetaBalls';
 
-
-const hero = () => {
-
+const Hero = () => {
     return (
-       
-
-      
         <section className="hero">
-         
-    
             <div className="hero-content">
-         
                 <div className="hero-logo">
                     <svg width="650" height="400" viewBox="0 0 810 810">
                         <use xlinkHref="#hero-logo"></use>
@@ -64,24 +56,22 @@ const hero = () => {
                 </div>
                 <a href="/" className="cta-button"></a>
             </div>
-            <section>
-                <div className="hero-balls">
-                    <MetaBalls 
-                        color="#000000"
-                        cursorBallColor="#f97316"
-                        speed={0.6}
-                        ballCount={15}
-                        animationSize={30}
-                        enableTransparency={true}
-                        enableMouseInteraction={true}
-                        hoverSmoothness={0.08}
-                        clumpFactor={1}
-                        cursorBallSize={2}
-                    />
-                </div>
+            <section className="hero-balls">
+                <MetaBalls 
+                    color="#000000"
+                    cursorBallColor="#f97316"
+                    speed={0.6}
+                    ballCount={15}
+                    animationSize={30}
+                    enableTransparency={true}
+                    enableMouseInteraction={true}
+                    hoverSmoothness={0.08}
+                    clumpFactor={1}
+                    cursorBallSize={2}
+                />
             </section>
         </section>
     );
 }
 
-export default hero;
+export default Hero;
