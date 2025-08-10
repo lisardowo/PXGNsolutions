@@ -53,7 +53,7 @@ const Portfolio = () => {
       variant: "default",
       link: "https://example.com/project3",
       image: "📝",
-      thumbnail: "/images/blog-project.jpg" // Add your image path here
+      thumbnail: "src/assets/Cubesat.webp" // Add your image path here
     },
     {
       id: 4,
@@ -62,7 +62,7 @@ const Portfolio = () => {
       variant: "default",
       link: "https://example.com/project4",
       image: "🚀",
-      thumbnail: "/images/landing-project.jpg" // Add your image path here
+      thumbnail: "src/assets/Cubesat.webp" // Add your image path here
     }
   ];
 

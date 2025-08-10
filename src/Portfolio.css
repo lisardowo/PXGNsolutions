@@ -190,7 +190,7 @@
 }
 
 .portfolio-card-cta {
-  @apply bg-orange-600 bg-opacity-90 text-white px-6 py-3 rounded-lg font-medium text-sm;
+  @apply bg-orange-600/80 text-white px-6 py-3 rounded-lg font-medium text-sm;
   @apply flex items-center gap-2;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
