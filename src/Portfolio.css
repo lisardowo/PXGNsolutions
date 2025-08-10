@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* Portfolio Section */
+.portfolio-section {
+  background: linear-gradient(180deg, 
+    #ffffff 0%, 
+    #f8fafc 50%, 
+    #f1f5f9 100%);
+  @apply py-20;
+  min-height: 100vh;
+  position: relative;
+}
+
+.portfolio-container {
+  @apply max-w-7xl mx-auto px-6;
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio-header {
+  @apply text-center mb-16;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.portfolio-section.is-visible .portfolio-header {
+  animation: slideInUp 0.8s ease-out 0.1s forwards;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-title {
+  @apply text-4xl md:text-5xl font-bold text-gray-900 mb-4;
+  font-family: inherit;
+}
+
+.portfolio-subtitle {
+  @apply text-xl text-gray-600 max-w-2xl mx-auto;
+  font-family: inherit;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-12 mb-16;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.portfolio-card-wrapper {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  @apply flex justify-center;
+}
+
+.portfolio-card-wrapper.fade-in {
+  animation: fadeInOnScroll 0.8s ease-out forwards;
+}
+
+@keyframes fadeInOnScroll {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* PixelCard Styles */
+.pixel-card {
+  @apply h-96 w-72 relative overflow-hidden border border-gray-800 rounded-3xl;
+  aspect-ratio: 4/5;
+  isolation: isolate;
+  @apply transition-colors duration-200 select-none cursor-pointer;
+  transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
+  display: block;
+}
+
+.pixel-card:hover {
+  @apply transform scale-105;
+  transition: transform 0.3s ease;
+}
+
+.pixel-card-canvas {
+  @apply absolute inset-0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  border-radius: inherit;
+}
+
+.pixel-card-content {
+  @apply absolute inset-0 z-10 p-8 flex flex-col justify-center items-center text-center;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Portfolio Card Content */
+.portfolio-card-inner {
+  @apply relative z-20 flex flex-col items-center justify-center h-full text-center;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: inherit;
+  backdrop-filter: blur(1px);
+  transition: background-color 0.3s ease;
+}
+
+.pixel-card:hover .portfolio-card-inner {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.portfolio-card-icon {
+  @apply text-6xl mb-6;
+  filter: grayscale(1) opacity(0.9);
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pixel-card:hover .portfolio-card-icon {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.1);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-card-title {
+  @apply text-2xl font-bold text-gray-900 mb-3;
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.pixel-card:hover .portfolio-card-title {
+  opacity: 1;
+}
+
+.portfolio-card-description {
+  @apply text-gray-700 text-sm leading-relaxed mb-6 px-4;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.pixel-card:hover .portfolio-card-description {
+  opacity: 1;
+}
+
+.portfolio-card-overlay {
+  @apply absolute bottom-8 left-1/2 transform -translate-x-1/2;
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.pixel-card:hover .portfolio-card-overlay {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.portfolio-card-cta {
+  @apply bg-gray-900 text-white px-6 py-3 rounded-lg font-medium text-sm;
+  @apply flex items-center gap-2;
+}
+
+/* Portfolio CTA */
+.portfolio-cta {
+  @apply text-center pt-8 border-t border-gray-200;
+}
+
+.portfolio-cta p {
+  @apply text-gray-600;
+}
+
+.portfolio-cta-link {
+  @apply text-orange-600 font-semibold hover:text-orange-700 transition-colors duration-300;
+  text-decoration: none;
+}
+
+.portfolio-cta-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .portfolio-section {
+    @apply py-16;
+  }
+  
+  .portfolio-title {
+    @apply text-3xl;
+  }
+  
+  .portfolio-subtitle {
+    @apply text-lg;
+  }
+  
+  .portfolio-grid {
+    @apply grid-cols-1 gap-8;
+  }
+  
+  .pixel-card {
+    @apply h-80 w-64;
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-grid {
+    @apply gap-6;
+  }
+  
+  .pixel-card {
+    @apply h-72 w-56;
+  }
+  
+  .portfolio-card-title {
+    @apply text-xl;
+  }
+  
+  .portfolio-card-description {
+    @apply text-xs;
+  }
+}

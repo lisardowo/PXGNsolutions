@@ -4,6 +4,7 @@ import './index.css'
 import GooeyNav from './Gooeynav';
 import Hero from './hero';
 import Services from './Services';
+import Portfolio from './Portfolio';
 
 const items = [
   { label: "Home", href: "#" },
@@ -28,6 +29,7 @@ const App = () => {
        colors={[1, 2, 3, 1, 2, 3, 1, 4]}/>
       <Hero />
       <Services />
+      <Portfolio />
     </div>
   )
 }
