@@ -5,6 +5,7 @@ import GooeyNav from './Gooeynav';
 import Hero from './hero';
 import Services from './Services';
 import Portfolio from './Portfolio';
+import Contact from './Contact';
 
 const items = [
   { label: "Home", href: "#" },
@@ -30,6 +31,7 @@ const App = () => {
       <Hero />
       <Services />
       <Portfolio />
+      <Contact />
     </div>
   )
 }

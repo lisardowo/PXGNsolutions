@@ -108,9 +108,7 @@ const Portfolio = () => {
           ))}
         </div>
         
-        <div className="portfolio-cta">
-          <p>Want to see more projects? <a href="#contact" className="portfolio-cta-link">Get in touch with us</a></p>
-        </div>
+       
       </div>
     </section>
   );
