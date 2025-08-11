@@ -12,6 +12,11 @@ const Contact = () => {
     service: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Replace with your Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwTFpCootJwa06NILugU0YEGpVdsCPeGXa8jIX7XmY9YpEY2yt0VvQVcgzEWb2kIpIF/exec';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,10 +42,31 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission logic here
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        mode: 'no-cors' // Required for Google Apps Script
+      });
+
+      // With no-cors mode, we can't read the response, so we assume success
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -85,7 +111,7 @@ const Contact = () => {
             </div>
             
             <div className="contact-card">
-              <div className="contact-icon">📱</div>
+              <div className="contact-icon">�</div>
               <h3>Phone</h3>
               <p>+1 (555) 123-4567<br />Mon - Fri, 9AM - 6PM</p>
             </div>
@@ -99,30 +125,42 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="contact-form-wrapper">
+            {submitStatus === 'success' && (
+              <div className="success-message">
+                ✅ ¡Gracias! Tu mensaje ha sido enviado exitosamente. Nos contactaremos contigo pronto.
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="error-message">
+                ❌ Algo salió mal. Por favor intenta de nuevo.
+              </div>
+            )}
+
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name">Full Name *</label>
+                  <label htmlFor="name">Nombre Completo *</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Enter your full name"
+                    placeholder="Ingresa tu nombre completo"
                     required
                   />
                 </div>
                 
                 <div className="form-group">
-                  <label htmlFor="email">Email Address *</label>
+                  <label htmlFor="email">Correo Electrónico *</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="your.email@example.com"
+                    placeholder="tu.correo@ejemplo.com"
                     required
                   />
                 </div>
@@ -130,7 +168,7 @@ const Contact = () => {
 
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="phone">Phone Number</label>
+                  <label htmlFor="phone">Número de Teléfono *</label>
                   <input
                     type="tel"
                     id="phone"
@@ -138,11 +176,12 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="+1 (555) 123-4567"
+                    required
                   />
                 </div>
                 
                 <div className="form-group">
-                  <label htmlFor="service">Service Interest *</label>
+                  <label htmlFor="service">Servicio de Interés *</label>
                   <select
                     id="service"
                     name="service"
@@ -150,32 +189,36 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                   >
-                    <option value="">Select a service</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="ui-ux-design">UI/UX Design</option>
-                    <option value="mobile-app">Mobile App Development</option>
-                    <option value="ecommerce">E-commerce Solutions</option>
-                    <option value="consulting">Technical Consulting</option>
-                    <option value="maintenance">Website Maintenance</option>
-                    <option value="other">Other</option>
+                    <option value="">Selecciona un servicio</option>
+                    <option value="Landing-Page">Landing Page</option>
+                    <option value="Full-Web">Full web</option>
+                    <option value="Blog">Blog</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Mantenimiento-Web">Mantenimiento Web</option>
+                    <option value="Otro">Otro</option>
                   </select>
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Project Details</label>
+                <label htmlFor="message">Detalles del Proyecto</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell us about your project, timeline, and any specific requirements..."
+                  placeholder="Cuéntanos sobre tu proyecto, cronograma y cualquier requisito específico..."
                   rows="5"
+                  
                 ></textarea>
               </div>
 
-              <button type="submit" className="contact-button">
-                <span>Send Message</span>
+              <button 
+                type="submit" 
+                className="contact-button"
+                disabled={isSubmitting}
+              >
+                <span>{isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}</span>
                 <span className="button-arrow">→</span>
               </button>
             </form>
