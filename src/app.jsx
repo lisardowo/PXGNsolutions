@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import GooeyNav from './Gooeynav';
 import Hero from './hero';
@@ -7,6 +8,7 @@ import Portfolio from './Portfolio';
 import Contact from './Contact';
 import { LanguageProvider, useI18n } from './i18n.jsx';
 import LanguageBar from './LanguageBar';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 const MainApp = () => {
   const { t } = useI18n();
@@ -16,6 +18,7 @@ const MainApp = () => {
     { label: t('nav_portafolio'), href: '#portafolio' },
     { label: t('nav_contacto'), href: '#contacto' },
   ];
+
   return (
     <>
       <GooeyNav
@@ -38,9 +41,16 @@ const MainApp = () => {
 };
 
 const App = () => (
-  <LanguageProvider initial="es">
-    <MainApp />
-  </LanguageProvider>
+  <BrowserRouter>
+    <LanguageProvider initial="es">
+      <Routes>
+        <Route path="/" element={<MainApp />} />
+        <Route path="/en" element={<MainApp />} />
+        <Route path="/es" element={<MainApp />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </LanguageProvider>
+  </BrowserRouter>
 );
 
 export default App;

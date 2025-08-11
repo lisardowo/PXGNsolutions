@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
-
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 export const translations = {
   nav_inicio: { es: 'Inicio', en: 'Home' },
   nav_servicios: { es: 'Servicios', en: 'Services' },
@@ -63,13 +63,38 @@ const LanguageContext = createContext({ lang: 'es', setLang: () => {}, t: (k) =>
 
 export const LanguageProvider = ({ initial = 'es', children }) => {
   const [lang, setLang] = useState(initial);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Detectar idioma de la URL al cargar
+  useEffect(() => {
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const langFromUrl = pathSegments[0];
+    
+    if (langFromUrl === 'en' || langFromUrl === 'es') {
+      setLang(langFromUrl);
+    } else {
+      setLang('es'); // Español por defecto
+    }
+  }, [location.pathname]);
+
+  const changeLanguage = (newLang) => {
+    setLang(newLang);
+    if (newLang === 'es') {
+      navigate('/', { replace: true });
+    } else {
+      navigate(`/${newLang}`, { replace: true });
+    }
+  };
+
   const t = useCallback((key) => {
     const entry = translations[key];
     if (!entry) return key;
     return entry[lang] || entry.es || key;
   }, [lang]);
+
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang: changeLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
