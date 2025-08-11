@@ -4,10 +4,16 @@
 .portfolio-section {
   background: linear-gradient(180deg, 
     #ffffff 0%, 
-    #f8fafc 50%, 
-    #f1f5f9 100%);
-  @apply py-20;
-  min-height: 100vh;
+    #f8fafc 40%, 
+    #f1f5f9 60%,
+    #e2e8f0 75%,
+    #94a3b8 82%,
+    #64748b 88%,
+    #374151 94%,
+    #1f2937 97%,
+    #000000 100%);
+  @apply py-32;
+  min-height: 120vh;
   position: relative;
 }
 
