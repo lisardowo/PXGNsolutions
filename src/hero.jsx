@@ -4,7 +4,7 @@ import MetaBalls from './MetaBalls';
 
 const Hero = () => {
     return (
-        <section className="hero">
+        <section id="inicio" className="hero">
             <div className="hero-content">
                 <div className="hero-logo">
                     <svg width="650" height="400" viewBox="0 0 810 810">

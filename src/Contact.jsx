@@ -71,6 +71,7 @@ const Contact = () => {
 
   return (
     <section 
+      id="contacto"
       ref={sectionRef} 
       className={`contact-section ${isVisible ? 'is-visible' : ''}`}
     >
@@ -89,9 +90,9 @@ const Contact = () => {
 
       <div className="contact-container">
         <div className="contact-header">
-          <h2 className="contact-title">Get In Touch</h2>
+          <h2 className="contact-title">Contáctanos</h2>
           <p className="contact-subtitle">
-            Ready to bring your vision to life? Let's discuss your project and create something amazing together.
+            ¿Listo para dar vida a tu visión? Hablemos sobre tu proyecto y creemos algo increíble juntos.
           </p>
         </div>
 
@@ -100,26 +101,26 @@ const Contact = () => {
           <div className="contact-info">
             <div className="contact-card">
               <div className="contact-icon">📍</div>
-              <h3>Location</h3>
-              <p>Remote & Local<br />Available Worldwide</p>
+              <h3>Ubicación</h3>
+              <p>Remoto y Local<br />Disponible en Todo el Mundo</p>
             </div>
             
             <div className="contact-card">
               <div className="contact-icon">✉️</div>
               <h3>Email</h3>
-              <p>hello@pxgnsolutions.com<br />Quick response guaranteed</p>
+              <p>hola@pxgnsolutions.com<br />Respuesta rápida garantizada</p>
             </div>
             
             <div className="contact-card">
               <div className="contact-icon">�</div>
-              <h3>Phone</h3>
-              <p>+1 (555) 123-4567<br />Mon - Fri, 9AM - 6PM</p>
+              <h3>Teléfono</h3>
+              <p>+1 (555) 123-4567<br />Lun - Vie, 9AM - 6PM</p>
             </div>
             
             <div className="contact-card">
               <div className="contact-icon">⏰</div>
-              <h3>Availability</h3>
-              <p>24/7 Support<br />Fast turnaround</p>
+              <h3>Disponibilidad</h3>
+              <p>Soporte 24/7<br />Entrega rápida</p>
             </div>
           </div>
 
@@ -201,7 +202,7 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Detalles del Proyecto</label>
+                <label htmlFor="message">Detalles del Proyecto *</label>
                 <textarea
                   id="message"
                   name="message"
@@ -209,7 +210,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Cuéntanos sobre tu proyecto, cronograma y cualquier requisito específico..."
                   rows="5"
-                  
+                  required
                 ></textarea>
               </div>
 

@@ -16,8 +16,56 @@ const GooeyNav = ({
   const filterRef = useRef(null);
   const textRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isNavigating, setIsNavigating] = useState(false);
+  const navigationTimeoutRef = useRef(null);
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
+
+  // Control de scroll para mostrar/ocultar navbar
+  useEffect(() => {
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Si hay scroll manual durante la navegación, cancelar el estado de navegación
+      if (isNavigating && Math.abs(currentScrollY - lastScrollY) > 5) {
+        setIsNavigating(false);
+        if (navigationTimeoutRef.current) {
+          clearTimeout(navigationTimeoutRef.current);
+          navigationTimeoutRef.current = null;
+        }
+      }
+      
+      // Si estamos navegando automáticamente, no cambiar visibilidad
+      if (isNavigating) {
+        setLastScrollY(currentScrollY);
+        return;
+      }
+      
+      if (currentScrollY < 10) {
+        // Siempre mostrar en la parte superior
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling hacia abajo - ocultar navbar
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling hacia arriba - mostrar navbar
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+      // Limpiar timeout al desmontar
+      if (navigationTimeoutRef.current) {
+        clearTimeout(navigationTimeoutRef.current);
+      }
+    };
+  }, [lastScrollY, isNavigating]);
 
   const getXY = (distance, pointIndex, totalPoints) => {
     const angle =
@@ -98,6 +146,20 @@ const GooeyNav = ({
     const liEl = e.currentTarget;
     if (activeIndex === index) return;
 
+    // Manejar navegación automática - mantener navbar visible
+    setIsNavigating(true);
+    setIsVisible(true);
+    
+    // Limpiar timeout anterior si existe
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+    }
+    
+    // Después de 1.5 segundos, permitir que la navbar se oculte de nuevo
+    navigationTimeoutRef.current = setTimeout(() => {
+      setIsNavigating(false);
+    }, 1500);
+
     setActiveIndex(index);
     updateEffectPosition(liEl);
 
@@ -149,7 +211,7 @@ const GooeyNav = ({
   }, [activeIndex]);
 
   return (
-    <div className="gooey-nav-container" ref={containerRef}>
+    <div className={`gooey-nav-container ${isVisible ? 'nav-visible' : 'nav-hidden'}`} ref={containerRef}>
       <nav>
         <ul ref={navRef}>
           {items.map((item, index) => (

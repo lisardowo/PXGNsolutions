@@ -31,38 +31,38 @@ const Portfolio = () => {
     {
       id: 1,
       title: "E-Commerce",
-      description: "Modern online store with payment integration",
+      description: "Tienda online moderna con integración de pagos",
       variant: "default",
       link: "https://example.com/project1",
       image: "🛒",
-      thumbnail: "src/assets/chippsstore.webp" // Add your image path here
+      thumbnail: "src/assets/chippsstore.webp"
     },
     {
       id: 2,
-      title: "Website",
-      description: "Professional business website with CMS",
+      title: "Sitio Web",
+      description: "Sitio web empresarial profesional con CMS",
       variant: "default",
       link: "https://example.com/project2",
       image: "🏢",
-      thumbnail: "src/assets/Cubesat.webp" // Add your image path here
+      thumbnail: "src/assets/Cubesat.webp"
     },
     {
       id: 3,
-      title: "Blog Platform",
-      description: "Content management system with rich editor",
+      title: "Plataforma de Blog",
+      description: "Sistema de gestión de contenido con editor avanzado",
       variant: "default",
       link: "https://example.com/project3",
       image: "📝",
-      thumbnail: "src/assets/Cubesat.webp" // Add your image path here
+      thumbnail: "src/assets/Cubesat.webp"
     },
     {
       id: 4,
       title: "Landing Page",
-      description: "High-converting landing page design",
+      description: "Diseño de página de aterrizaje de alta conversión",
       variant: "default",
       link: "https://example.com/project4",
       image: "🚀",
-      thumbnail: "src/assets/Cubesat.webp" // Add your image path here
+      thumbnail: "src/assets/Cubesat.webp"
     }
   ];
 
@@ -71,12 +71,12 @@ const Portfolio = () => {
   };
 
   return (
-    <section ref={sectionRef} className={`portfolio-section ${isVisible ? 'is-visible' : ''}`}>
+    <section id="portafolio" ref={sectionRef} className={`portfolio-section ${isVisible ? 'is-visible' : ''}`}>
       <div className="portfolio-container">
         <div className="portfolio-header">
-          <h2 className="portfolio-title">Our Portfolio</h2>
+          <h2 className="portfolio-title">Nuestro Portafolio</h2>
           <p className="portfolio-subtitle">
-            Discover our latest work and successful projects
+            Descubre nuestros últimos trabajos y proyectos exitosos
           </p>
         </div>
         
@@ -100,7 +100,7 @@ const Portfolio = () => {
                   <h3 className="portfolio-card-title">{item.title}</h3>
                   <p className="portfolio-card-description">{item.description}</p>
                   <div className="portfolio-card-overlay">
-                    <span className="portfolio-card-cta">View Project →</span>
+                    <span className="portfolio-card-cta">Ver Proyecto →</span>
                   </div>
                 </div>
               </PixelCard>

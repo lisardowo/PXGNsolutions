@@ -30,44 +30,44 @@ const Services = () => {
     {
       id: 1,
       title: "Landing Page",
-      description: "Professional single-page websites designed to convert visitors into customers with compelling design and clear call-to-actions.",
+      description: "Sitios web profesionales de una sola página diseñados para convertir visitantes en clientes con diseño atractivo y llamadas a la acción claras.",
       icon: "🚀",
-      features: ["Responsive Design", "Fast Loading", "SEO Optimized", "Conversion Focused"],
-      price: "From $50"
+      features: ["Diseño Responsivo", "Carga Rápida", "SEO Optimizado", "Enfoque en Conversión"],
+      price: "Desde $50"
     },
     {
       id: 2,
-      title: "Full Web Page",
-      description: "Complete multi-page websites with custom functionality, perfect for businesses that need a comprehensive online presence.",
+      title: "Sitio Web Completo",
+      description: "Sitios web completos de múltiples páginas con funcionalidad personalizada, perfectos para empresas que necesitan una presencia online integral.",
       icon: "🌐",
-      features: ["Multi-page Design", "Custom Features", "Admin Panel", "Mobile Optimized"],
-      price: "From $150"
+      features: ["Diseño Multi-página", "Funciones Personalizadas", "Panel Administrativo", "Optimizado para Móvil"],
+      price: "Desde $150"
     },
     {
       id: 3,
       title: "Blog",
-      description: "Dynamic blog platforms with content management systems, perfect for sharing your expertise and building your audience.",
+      description: "Plataformas de blog dinámicas con sistemas de gestión de contenido, perfectas para compartir tu experiencia y construir tu audiencia.",
       icon: "📝",
-      features: ["CMS Integration", "Social Sharing", "Comment System", "SEO Ready"],
-      price: "From $300"
+      features: ["Integración CMS", "Compartir en Redes", "Sistema de Comentarios", "SEO Preparado"],
+      price: "Desde $300"
     },
     {
       id: 4,
       title: "E-commerce",
-      description: "Full-featured online stores with secure payment processing, inventory management, and customer account systems.",
+      description: "Tiendas online completas con procesamiento seguro de pagos, gestión de inventario y sistemas de cuentas de clientes.",
       icon: "🛒",
-      features: ["Payment Gateway", "Inventory System", "Order Management", "Customer Accounts"],
-      price: "From $500"
+      features: ["Pasarela de Pago", "Sistema de Inventario", "Gestión de Pedidos", "Cuentas de Clientes"],
+      price: "Desde $500"
     }
   ];
 
   return (
-    <section ref={sectionRef} className={`services-section ${isVisible ? 'is-visible' : ''}`}>
+    <section id="servicios" ref={sectionRef} className={`services-section ${isVisible ? 'is-visible' : ''}`}>
       <div className="services-container">
         <div className="services-header">
-          <h2 className="services-title">Our Services</h2>
+          <h2 className="services-title">Nuestros Servicios</h2>
           <p className="services-subtitle">
-            We create digital solutions that drive your business forward
+            Creamos soluciones digitales que impulsan tu negocio hacia adelante
           </p>
         </div>
         
@@ -94,7 +94,7 @@ const Services = () => {
                 <div className="service-footer">
                   <div className="service-price">{service.price}</div>
                   <button className="service-button">
-                    Get Started
+                    Comenzar
                     <span className="button-arrow">→</span>
                   </button>
                 </div>

@@ -8,10 +8,10 @@ import Portfolio from './Portfolio';
 import Contact from './Contact';
 
 const items = [
-  { label: "Home", href: "#" },
-  { label: "Services", href: "#" },
-  { label: "Portfolio", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Inicio", href: "#inicio" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Portafolio", href: "#portafolio" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 const App = () => {

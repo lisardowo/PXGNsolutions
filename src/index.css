@@ -1,12 +1,28 @@
 @import "tailwindcss";
 
+* {
+  font-family: 'Orbitron', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 header{
  width: 100%;
  display: flex;
-
 }
 
 body {
   @apply bg-black;
- 
+  font-family: 'Orbitron', monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+}
+
+p, span, div, label, input, textarea, select, button {
+  font-family: 'Orbitron', monospace;
 }
