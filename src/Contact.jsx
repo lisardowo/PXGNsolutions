@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import LetterGlitch from "./LetterGlitch";
 import './Contact.css';
+import { useI18n } from './i18n.jsx';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -69,6 +70,8 @@ const Contact = () => {
     }
   };
 
+  const { t } = useI18n();
+
   return (
     <section 
       id="contacto"
@@ -90,10 +93,8 @@ const Contact = () => {
 
       <div className="contact-container">
         <div className="contact-header">
-          <h2 className="contact-title">Contáctanos</h2>
-          <p className="contact-subtitle">
-            ¿Listo para dar vida a tu visión? Hablemos sobre tu proyecto y creemos algo increíble juntos.
-          </p>
+          <h2 className="contact-title">{t('contact_title')}</h2>
+          <p className="contact-subtitle">{t('contact_subtitle')}</p>
         </div>
 
         <div className="contact-content">
@@ -101,67 +102,62 @@ const Contact = () => {
           <div className="contact-info">
             <div className="contact-card">
               <div className="contact-icon">📍</div>
-              <h3>Ubicación</h3>
-              <p>Remoto y Local<br />Disponible en Todo el Mundo</p>
+              <h3>{t('contact_location')}</h3>
+              <p>{t('contact_location_val').split('\n').map((l,i)=><React.Fragment key={i}>{l}{i===0 && <br/>}</React.Fragment>)}</p>
             </div>
             
             <div className="contact-card">
               <div className="contact-icon">✉️</div>
-              <h3>Email</h3>
-              <p>hola@pxgnsolutions.com<br />Respuesta rápida garantizada</p>
+              <h3>{t('contact_email')}</h3>
+              <p>{t('contact_email_val').split('\n').map((l,i)=><React.Fragment key={i}>{l}{i===0 && <br/>}</React.Fragment>)}</p>
             </div>
             
             <div className="contact-card">
               <div className="contact-icon">�</div>
-              <h3>Teléfono</h3>
-              <p>+1 (555) 123-4567<br />Lun - Vie, 9AM - 6PM</p>
+              <h3>{t('contact_phone')}</h3>
+              <p>{t('contact_phone_val').split('\n').map((l,i)=><React.Fragment key={i}>{l}{i===0 && <br/>}</React.Fragment>)}</p>
             </div>
             
             <div className="contact-card">
               <div className="contact-icon">⏰</div>
-              <h3>Disponibilidad</h3>
-              <p>Soporte 24/7<br />Entrega rápida</p>
+              <h3>{t('contact_availability')}</h3>
+              <p>{t('contact_availability_val').split('\n').map((l,i)=><React.Fragment key={i}>{l}{i===0 && <br/>}</React.Fragment>)}</p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="contact-form-wrapper">
-            {submitStatus === 'success' && (
-              <div className="success-message">
-                ✅ ¡Gracias! Tu mensaje ha sido enviado exitosamente. Nos contactaremos contigo pronto.
-              </div>
+                {submitStatus === 'success' && (
+              <div className="success-message">{t('contact_success')}</div>
             )}
-            
             {submitStatus === 'error' && (
-              <div className="error-message">
-                ❌ Algo salió mal. Por favor intenta de nuevo.
-              </div>
+              <div className="error-message">{t('contact_error')}</div>
             )}
 
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name">Nombre Completo *</label>
+                  <label htmlFor="name">{t('contact_full_name')}</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Ingresa tu nombre completo"
+                    placeholder={t('contact_full_name_ph')}
                     required
                   />
                 </div>
                 
                 <div className="form-group">
-                  <label htmlFor="email">Correo Electrónico *</label>
+                  <label htmlFor="email">{t('contact_email_label')}</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="tu.correo@ejemplo.com"
+                    placeholder={t('contact_email_ph')}
                     required
                   />
                 </div>
@@ -169,20 +165,20 @@ const Contact = () => {
 
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="phone">Número de Teléfono *</label>
+                  <label htmlFor="phone">{t('contact_phone_label')}</label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="+1 (555) 123-4567"
+                    placeholder={t('contact_phone_ph')}
                     required
                   />
                 </div>
                 
                 <div className="form-group">
-                  <label htmlFor="service">Servicio de Interés *</label>
+                  <label htmlFor="service">{t('contact_service_label')}</label>
                   <select
                     id="service"
                     name="service"
@@ -190,27 +186,27 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                   >
-                    <option value="">Selecciona un servicio</option>
-                    <option value="Landing-Page">Landing Page</option>
-                    <option value="Full-Web">Full web</option>
-                    <option value="Blog">Blog</option>
-                    <option value="E-commerce">E-commerce</option>
-                    <option value="Mantenimiento-Web">Mantenimiento Web</option>
-                    <option value="Otro">Otro</option>
+                    <option value="">{t('contact_service_select')}</option>
+                    <option value="Landing-Page">{t('contact_service_lp')}</option>
+                    <option value="Full-Web">{t('contact_service_fw')}</option>
+                    <option value="Blog">{t('contact_service_blog')}</option>
+                    <option value="E-commerce">{t('contact_service_ecom')}</option>
+                    <option value="Mantenimiento-Web">{t('contact_service_maint')}</option>
+                    <option value="Otro">{t('contact_service_other')}</option>
                   </select>
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Detalles del Proyecto *</label>
+                <label htmlFor="message">{t('contact_project_details')} </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Cuéntanos sobre tu proyecto, cronograma y cualquier requisito específico..."
+                  placeholder={t('contact_project_details_ph')}
                   rows="5"
-                  required
+                  
                 ></textarea>
               </div>
 
@@ -219,7 +215,7 @@ const Contact = () => {
                 className="contact-button"
                 disabled={isSubmitting}
               >
-                <span>{isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}</span>
+                <span>{isSubmitting ? t('contact_btn_sending') : t('contact_btn_send')}</span>
                 <span className="button-arrow">→</span>
               </button>
             </form>

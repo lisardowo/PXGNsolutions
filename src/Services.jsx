@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Services.css';
+import { useI18n } from './i18n.jsx';
 
 const Services = () => {
   const sectionRef = useRef(null);
@@ -26,38 +27,39 @@ const Services = () => {
     return () => observer.disconnect();
   }, []);
 
+  const { t } = useI18n();
   const services = [
     {
       id: 1,
-      title: "Landing Page",
-      description: "Sitios web profesionales de una sola página diseñados para convertir visitantes en clientes con diseño atractivo y llamadas a la acción claras.",
-      icon: "🚀",
-      features: ["Diseño Responsivo", "Carga Rápida", "SEO Optimizado", "Enfoque en Conversión"],
-      price: "Desde $50"
+      title: 'Landing Page',
+      description: t('service_landing_desc'),
+      icon: '🚀',
+      features: t('service_landing_features').split('|'),
+      price: `${t('service_price_from')} $50 USD`
     },
     {
       id: 2,
-      title: "Sitio Web Completo",
-      description: "Sitios web completos de múltiples páginas con funcionalidad personalizada, perfectos para empresas que necesitan una presencia online integral.",
-      icon: "🌐",
-      features: ["Diseño Multi-página", "Funciones Personalizadas", "Panel Administrativo", "Optimizado para Móvil"],
-      price: "Desde $150"
+      title: 'Sitio Web Completo',
+      description: t('service_full_desc'),
+      icon: '🌐',
+      features: t('service_full_features').split('|'),
+      price: `${t('service_price_from')} $150 USD`
     },
     {
       id: 3,
-      title: "Blog",
-      description: "Plataformas de blog dinámicas con sistemas de gestión de contenido, perfectas para compartir tu experiencia y construir tu audiencia.",
-      icon: "📝",
-      features: ["Integración CMS", "Compartir en Redes", "Sistema de Comentarios", "SEO Preparado"],
-      price: "Desde $300"
+      title: 'Blog',
+      description: t('service_blog_desc'),
+      icon: '📝',
+      features: t('service_blog_features').split('|'),
+      price: `${t('service_price_from')} $300 USD`
     },
     {
       id: 4,
-      title: "E-commerce",
-      description: "Tiendas online completas con procesamiento seguro de pagos, gestión de inventario y sistemas de cuentas de clientes.",
-      icon: "🛒",
-      features: ["Pasarela de Pago", "Sistema de Inventario", "Gestión de Pedidos", "Cuentas de Clientes"],
-      price: "Desde $500"
+      title: 'E-commerce',
+      description: t('service_ecom_desc'),
+      icon: '🛒',
+      features: t('service_ecom_features').split('|'),
+      price: `${t('service_price_from')} $500 USD`
     }
   ];
 
@@ -65,10 +67,8 @@ const Services = () => {
     <section id="servicios" ref={sectionRef} className={`services-section ${isVisible ? 'is-visible' : ''}`}>
       <div className="services-container">
         <div className="services-header">
-          <h2 className="services-title">Nuestros Servicios</h2>
-          <p className="services-subtitle">
-            Creamos soluciones digitales que impulsan tu negocio hacia adelante
-          </p>
+          <h2 className="services-title">{t('services_title')}</h2>
+          <p className="services-subtitle">{t('services_subtitle')}</p>
         </div>
         
         <div className="services-grid">
@@ -93,10 +93,8 @@ const Services = () => {
                 
                 <div className="service-footer">
                   <div className="service-price">{service.price}</div>
-                  <button className="service-button">
-                    Comenzar
-                    <span className="button-arrow">→</span>
-                  </button>
+                  
+                
                 </div>
               </div>
             </div>

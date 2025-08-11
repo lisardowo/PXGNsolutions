@@ -48,6 +48,15 @@
   pointer-events: none;
 }
 
+/* Variante inferior (language bar) */
+.gooey-nav-container.language-bar {
+  top: auto;
+  bottom: 2rem;
+}
+.gooey-nav-container.language-bar.nav-hidden {
+  transform: translateX(-50%) translateY(120px);
+}
+
 .gooey-nav-container nav {
   display: flex;
   position: relative;

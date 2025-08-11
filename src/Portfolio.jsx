@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PixelCard from './PixelCard';
 import './Portfolio.css';
+import { useI18n } from './i18n.jsx';
 
 const Portfolio = () => {
   const sectionRef = useRef(null);
@@ -27,43 +28,12 @@ const Portfolio = () => {
     return () => observer.disconnect();
   }, []);
 
+  const { t } = useI18n();
   const portfolioItems = [
-    {
-      id: 1,
-      title: "E-Commerce",
-      description: "Tienda online moderna con integración de pagos",
-      variant: "default",
-      link: "https://example.com/project1",
-      image: "🛒",
-      thumbnail: "src/assets/chippsstore.webp"
-    },
-    {
-      id: 2,
-      title: "Sitio Web",
-      description: "Sitio web empresarial profesional con CMS",
-      variant: "default",
-      link: "https://example.com/project2",
-      image: "🏢",
-      thumbnail: "src/assets/Cubesat.webp"
-    },
-    {
-      id: 3,
-      title: "Plataforma de Blog",
-      description: "Sistema de gestión de contenido con editor avanzado",
-      variant: "default",
-      link: "https://example.com/project3",
-      image: "📝",
-      thumbnail: "src/assets/Cubesat.webp"
-    },
-    {
-      id: 4,
-      title: "Landing Page",
-      description: "Diseño de página de aterrizaje de alta conversión",
-      variant: "default",
-      link: "https://example.com/project4",
-      image: "🚀",
-      thumbnail: "src/assets/Cubesat.webp"
-    }
+    { id: 1, title: 'E-Commerce', description: t('portfolio_item_ecom_desc'), variant: 'default', link: 'https://lisardowo.github.io/ChippsStore/', image: '🛒', thumbnail: 'src/assets/chippsstore.webp' },
+    { id: 2, title: 'Sitio Web', description: t('portfolio_item_site_desc'), variant: 'default', link: 'https://lisardowo.github.io/CUBESAT/', image: '🏢', thumbnail: 'src/assets/Cubesat.webp' },
+    { id: 3, title: 'Plataforma de Blog', description: t('portfolio_item_blog_desc'), variant: 'default', link: 'https://lisardowo.github.io/Blog/', image: '📝', thumbnail: 'src/assets/Cubesat.webp' },
+    { id: 4, title: 'Landing Page', description: t('portfolio_item_landing_desc'), variant: 'default', link: 'https://lisardowo.github.io/NeoMagic/', image: '🚀', thumbnail: 'src/assets/Cubesat.webp' }
   ];
 
   const handleCardClick = (link) => {
@@ -74,10 +44,8 @@ const Portfolio = () => {
     <section id="portafolio" ref={sectionRef} className={`portfolio-section ${isVisible ? 'is-visible' : ''}`}>
       <div className="portfolio-container">
         <div className="portfolio-header">
-          <h2 className="portfolio-title">Nuestro Portafolio</h2>
-          <p className="portfolio-subtitle">
-            Descubre nuestros últimos trabajos y proyectos exitosos
-          </p>
+          <h2 className="portfolio-title">{t('portfolio_title')}</h2>
+          <p className="portfolio-subtitle">{t('portfolio_subtitle')}</p>
         </div>
         
         <div className="portfolio-grid">
@@ -100,7 +68,7 @@ const Portfolio = () => {
                   <h3 className="portfolio-card-title">{item.title}</h3>
                   <p className="portfolio-card-description">{item.description}</p>
                   <div className="portfolio-card-overlay">
-                    <span className="portfolio-card-cta">Ver Proyecto →</span>
+                    <span className="portfolio-card-cta">{t('portfolio_view_project')}</span>
                   </div>
                 </div>
               </PixelCard>
