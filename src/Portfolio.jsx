@@ -30,10 +30,9 @@ const Portfolio = () => {
 
   const { t } = useI18n();
   const portfolioItems = [
-    { id: 1, title: 'E-Commerce', description: t('portfolio_item_ecom_desc'), variant: 'default', link: 'https://lisardowo.github.io/ChippsStore/', image: '🛒', thumbnail: 'src/assets/chippsstore.webp' },
-    { id: 2, title: 'Sitio Web', description: t('portfolio_item_site_desc'), variant: 'default', link: 'https://lisardowo.github.io/CUBESAT/', image: '🏢', thumbnail: 'src/assets/Cubesat.webp' },
-    { id: 3, title: 'Plataforma de Blog', description: t('portfolio_item_blog_desc'), variant: 'default', link: 'https://lisardowo.github.io/Blog/', image: '📝', thumbnail: 'src/assets/Cubesat.webp' },
-    { id: 4, title: 'Landing Page', description: t('portfolio_item_landing_desc'), variant: 'default', link: 'https://lisardowo.github.io/NeoMagic/', image: '🚀', thumbnail: 'src/assets/Cubesat.webp' }
+    { id: 1, title: 'Chippstore', description: t('portfolio_item_ecom_desc'), variant: 'default', link: 'https://lisardowo.github.io/ChippsStore/', image: '🛒', thumbnail: 'src/assets/chippsstore.webp' },
+    { id: 2, title: 'Cubesat', description: t('portfolio_item_site_desc'), variant: 'default', link: 'https://lisardowo.github.io/CUBESAT/', image: '🏢', thumbnail: 'src/assets/Cubesat.webp' },
+    { id: 3, title: 'NeoMagic', description: t('portfolio_item_landing_desc'), variant: 'default', link: 'https://lisardowo.github.io/NeoMagic/', image: '🚀', thumbnail: 'src/assets/Cubesat.webp' }
   ];
 
   const handleCardClick = (link) => {
