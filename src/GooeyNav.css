@@ -249,3 +249,77 @@
     opacity: 0;
   }
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .gooey-nav-container {
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 2rem);
+    max-width: 400px;
+  }
+
+  .gooey-nav-container nav {
+    padding: 0.3rem;
+    border-radius: 25px;
+  }
+
+  .gooey-nav-container nav ul {
+    gap: 0.5em;
+    padding: 0 0.5em;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .gooey-nav-container nav ul li {
+    flex: 1;
+    text-align: center;
+  }
+
+  .gooey-nav-container nav ul li a {
+    padding: 0.5em 0.3em;
+    font-size: 0.85rem;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Touch-friendly adjustments */
+  .gooey-nav-container nav ul li a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Language bar mobile adjustments */
+  .gooey-nav-container.language-bar {
+    bottom: 1rem;
+    width: auto;
+    max-width: 200px;
+  }
+
+  .gooey-nav-container.language-bar nav ul {
+    gap: 1em;
+    justify-content: center;
+  }
+
+  .gooey-nav-container.language-bar nav ul li {
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .gooey-nav-container nav ul li a {
+    font-size: 0.75rem;
+    padding: 0.4em 0.2em;
+  }
+
+  /* Extra small screens - even more compact */
+  .gooey-nav-container nav ul {
+    gap: 0.3em;
+    padding: 0 0.3em;
+  }
+}
