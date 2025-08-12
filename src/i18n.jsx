@@ -55,7 +55,7 @@ export const translations = {
   contact_success: { es: '✅ ¡Gracias! Tu mensaje ha sido enviado exitosamente. Nos contactaremos contigo pronto.', en: '✅ Thank you! Your message has been sent successfully. We will contact you soon.' },
   contact_error: { es: '❌ Algo salió mal. Por favor intenta de nuevo.', en: '❌ Something went wrong. Please try again.' },
   lang_es: { es: 'Español', en: 'Spanish' },
-  lang_en: { es: 'English', en: 'Inglés' },
+  lang_en: { es: 'Inglés', en: 'English' },
   lang_switch_hint: { es: 'Idioma', en: 'Language' }
 };
 
