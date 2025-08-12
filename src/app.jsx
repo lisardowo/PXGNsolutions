@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import GooeyNav from './Gooeynav';
+import GooeyNav from './GooeyNav.jsx';
 import Hero from './hero';
 import Services from './Services';
 import Portfolio from './Portfolio';
