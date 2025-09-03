@@ -99,28 +99,28 @@ const VARIANTS = {
   default: {
     activeColor: null,
     gap: 4,
-    speed: 35,
+    speed: 50,
     colors: "#f97316,#fb923c,#fdba74",
     noFocus: false
   },
   blue: {
     activeColor: null,
     gap: 4,
-    speed: 35,
+    speed: 50,
     colors: "#f97316,#fb923c,#fdba74",
     noFocus: false
   },
   yellow: {
     activeColor: null,
     gap: 4,
-    speed: 35,
+    speed: 50,
     colors: "#f97316,#fb923c,#fdba74",
     noFocus: false
   },
   pink: {
     activeColor: null,
     gap: 4,
-    speed: 35,
+    speed: 50,
     colors: "#f97316,#fb923c,#fdba74",
     noFocus: false
   }

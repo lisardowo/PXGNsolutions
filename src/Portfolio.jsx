@@ -32,7 +32,6 @@ const Portfolio = () => {
   const portfolioItems = [
     { id: 1, title: 'Chippstore', description: t('portfolio_item_ecom_desc'), variant: 'default', link: 'https://lisardowo.github.io/ChippsStore/', image: '🛒', thumbnail: '/images/chippsstore.webp' },
     { id: 2, title: 'Cubesat', description: t('portfolio_item_site_desc'), variant: 'default', link: 'https://lisardowo.github.io/CUBESAT/', image: '🏢', thumbnail: '/images/Cubesat.webp' },
-    { id: 3, title: 'NeoMagic', description: t('portfolio_item_landing_desc'), variant: 'default', link: 'https://lisardowo.github.io/NeoMagic/', image: '🚀', thumbnail: '/images/neomagic.webp' }
   ];
 
   const handleCardClick = (link) => {

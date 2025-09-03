@@ -39,7 +39,7 @@ const Services = () => {
     },
     {
       id: 2,
-      title: 'Sitio Web Completo',
+      title: 'Full web',
       description: t('service_full_desc'),
       icon: '🌐',
       features: t('service_full_features').split('|'),
